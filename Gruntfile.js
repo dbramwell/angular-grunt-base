@@ -5,10 +5,10 @@ module.exports = function(grunt) {
 
 		html2js: {
 			options: {
-				base: 'client/src'
+				base: 'client/src/templates'
 			},
 			main: {
-				src: ['client/src/**/*.html'],
+				src: ['client/src/templates/**/*.html'],
 				dest: 'build/tmp/templates.js'
 			},
 		},
