@@ -4,5 +4,5 @@ var angular = require('angular');
 
 var app = angular.module('myApp', ['templates-main']);
 
-app.directive('aGreatEye', require('./directives/aGreatEye'));
+app.controller('MainNavController', ['$scope', require('./controllers/mainNav')]);
 app.directive('navBar', require('./directives/navBar'));
