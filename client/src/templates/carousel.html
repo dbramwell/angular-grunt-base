@@ -1,0 +1,11 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" ng-repeat="slide in slides" data-slide-to="{{$index}}" ng-class="{active: $index==0}"></li>
+  </ol>
+
+  <div class="carousel-inner" role="listbox">
+    <div class="item" ng-repeat="slide in slides" ng-class="{active: $index==0}">
+      <img src="{{slide.image}}" alt="{{slide.alt}}">
+    </div>
+  </div>
+</div>

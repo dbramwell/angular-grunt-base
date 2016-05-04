@@ -44,6 +44,16 @@ module.exports = function(grunt) {
 					]
 				}
 			}
+		},
+
+		watch: {
+			scripts: {
+				files: ['client/**/*'],
+				tasks: ['default'],
+				options: {
+					spawn: false,
+				},
+			},
 		}
 
 	});
@@ -52,6 +62,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-karma');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['html2js', 'browserify', 'concat', 'karma']);
 
