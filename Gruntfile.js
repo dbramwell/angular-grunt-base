@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: ['build/tmp/client.js', 'build/tmp/templates.js'],
-				dest: 'build/dist.js'
+				dest: 'build/js/dist.js'
 			}
 		},
 
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 					singleRun: true,
 					browsers: ['PhantomJS'],
 					files: [
-						'build/dist.js',
+						'build/js/dist.js',
 						'node_modules/angular-mocks/angular-mocks.js',
 						'client/test/**/*.js'
 					]
@@ -47,15 +47,54 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			scripts: {
+			all: {
 				files: ['client/**/*'],
 				tasks: ['default'],
 				options: {
 					spawn: false,
 				},
 			},
-		}
+		},
 
+		protractor: {
+			all: {
+				options: {
+					configFile: "client/e2eTest/conf.js",
+					args: {}
+				}
+			},
+
+		},
+		connect: {
+			options: {
+				hostname: 'localhost',
+				base: ['build']
+			},
+			test: {
+				options: {
+					port: 9000
+				}
+			},
+			keepalive: {
+				options: {
+					port: 9001,
+					keepalive: true
+				}
+			}
+		},
+
+		copy: {
+			main: {
+				files: [
+					{expand: true, cwd: 'public/', src: ['**'], dest: 'build/'},
+					{expand: true, flatten: true, src: [
+						'node_modules/bootstrap/dist/css/bootstrap.min.css',
+						'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'], dest: 'build/css/'}
+				]
+			},
+		},
+
+		clean: ['build']
 	});
 
 	grunt.loadNpmTasks('grunt-html2js');
@@ -63,7 +102,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-protractor-runner');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['html2js', 'browserify', 'concat', 'karma']);
-
+	grunt.registerTask('default', ['clean', 'html2js', 'browserify', 'concat', 'copy', 'karma']);
+	grunt.registerTask('e2e', ['clean', 'html2js', 'browserify', 'concat', 'copy', 'connect:test', 'protractor']);
 };

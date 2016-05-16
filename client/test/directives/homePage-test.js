@@ -12,13 +12,13 @@ describe('Unit testing home page directive', function() {
   it('Replaces the element with the appropriate content', function() {
     var element = $compile("<home-page></home-page>")($rootScope);
     $rootScope.$digest();
-    expect(element.is('div#home-page')).toEqual(true);
+    expect(element.is('#home-page')).toEqual(true);
   });
 
-  it('Home page contains 3 links', function() {
+  it('Home page contains 4 links', function() {
     var element = $compile("<home-page></home-page>")($rootScope);
     $rootScope.$digest();
-    expect(element.find('a').size()).toEqual(3);
+    expect(element.find('a').size()).toEqual(4);
   });
 
   it('Home page header contains my name', function() {

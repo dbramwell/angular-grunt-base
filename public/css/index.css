@@ -1,13 +1,19 @@
 body {
 	background-color: #0F0F0F;
 	margin-top: 50px;
+    color: #9d9d9d;
+}
+
+section.info {
+    text-align: center;
+    height: 100%;
 }
 
 #home-page {
 	width: 100%;
 	margin: auto;
 	height: 100%;
-	background-image: url("home.jpg");
+	background-image: url("../images/home.jpg");
 	background-size:cover;
 	text-align: center;
 }

@@ -6,12 +6,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="{{brand.href}}" ng-click="setActive(undefined)">{{brand.name}}</a>
+      <a class="navbar-brand" href="{{brand.href}}" ng-click="setActive(undefined)" du-smooth-scroll du-scrollspy>{{brand.name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 	    <ul class="nav navbar-nav">
-	      <li ng-class="{active: $index==selectedIndex}" ng-repeat="button in buttons">
-	        <a ng-click="setActive($index)" href="{{button.href}}">{{button.name}}</a>
+	      <li du-scrollspy="{{removeHash(button.href)}}" ng-repeat="button in buttons">
+	        <a href="{{button.href}}" du-smooth-scroll>{{button.name}}</a>
 	      </li>
 	    </ul>
 	</div>

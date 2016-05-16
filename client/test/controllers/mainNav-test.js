@@ -13,17 +13,7 @@ describe('mainNav Controller', function() {
       var $scope = {};
       var controller = $controller('MainNavController', { $scope: $scope });
       expect($scope.brand.name).toEqual('David Bramwell');
-      expect($scope.brand.href).toEqual('#home');
-    });
-  });
-
-  describe('$scope.setActive', function() {
-    it('setActive sets selectedIndex to correct number', function() {
-      var $scope = {};
-      var controller = $controller('MainNavController', { $scope: $scope });
-      expect($scope.selectedIndex).toEqual(undefined);
-      $scope.setActive(1)
-      expect($scope.selectedIndex).toEqual(1);
+      expect($scope.brand.href).toEqual('#home-page');
     });
   });
 });
