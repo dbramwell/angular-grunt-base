@@ -4,7 +4,6 @@ describe('education Controller', function() {
   var $controller;
 
   beforeEach(inject(function(_$controller_) {
-    // The injector unwraps the underscores (_) from around the parameter names when matching
     $controller = _$controller_;
   }));
 
@@ -17,6 +16,9 @@ describe('education Controller', function() {
       expect($scope.info).toEqual([{
         title: 'EDUCATION',
         subContent: [{
+          title: 'DEGREE',
+          content: ['2:2 BSC Degree in Mathematics from Nottingham University']
+        }, {
           title: 'A-LEVELS',
           content: [
             'Maths: A',
@@ -24,8 +26,20 @@ describe('education Controller', function() {
             'Physics: C'
           ]
         }, {
-          title: 'DEGREE',
-          content: ['2:2 BSC Degree in Mathematics from Nottingham University']
+          title: 'GCSEs',
+          content: [
+            'Maths: A*',
+            'Biology: A',
+            'Chemistry: A',
+            'Physics: A',
+            'French: A',
+            'Spanish: A',
+            'English Language: B',
+            'English Literature: B',
+            'Latin: B',
+            'Information Technology: B',
+            'Religious Education: C'
+          ]
         }]
       }]);
     });

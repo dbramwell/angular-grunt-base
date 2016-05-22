@@ -1,11 +1,12 @@
 module.exports = function($scope) {
+
 	$scope.brand = {
 		name: 'David Bramwell',
-		href: '#home-page'
+		sref: 'home'
 	};
 	$scope.buttons = [{
 		name: 'Education',
-		href: '#education'
+		sref: 'education'
 	}];
 	$scope.removeHash = function(string) {
         return string.replace("#", '');

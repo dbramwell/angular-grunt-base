@@ -1,7 +1,7 @@
-<section class="info">
+<div class="info" ng-class="$state.current.data.bodyClass">
     <div ng-repeat="section in info">
         <h1>{{section.title}}</h1>
         <p ng-if="section.content">{{section.content}}</p>
         <sub-section ng-repeat="subSection in section.subContent"></sub-section>
     </div>
-</section>
+</div>

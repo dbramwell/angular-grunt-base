@@ -9,7 +9,7 @@ describe('Simple Test', function() {
 	});
 
 	it('should have active class once clicked', function() {
-		element(by.css('a[href="#education"]')).click();
+		element(by.css('a[ui-sref="education"]')).click();
 		browser.wait(function() { return element(by.css('li.active')).isPresent() });
 		expect(element(by.css('li.active')).getText()).toEqual('Education');
 	});
