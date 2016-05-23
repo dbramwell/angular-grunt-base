@@ -107,6 +107,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
-	grunt.registerTask('default', ['clean', 'html2js', 'browserify', 'concat', 'copy', 'karma']);
-	grunt.registerTask('e2e', ['clean', 'html2js', 'browserify', 'concat', 'copy', 'connect:test', 'protractor']);
+	grunt.registerTask('build', ['clean', 'html2js', 'browserify', 'concat', 'copy']);
+	grunt.registerTask('default', ['build', 'karma']);
+	grunt.registerTask('e2e', ['build', 'connect:test', 'protractor']);
 };

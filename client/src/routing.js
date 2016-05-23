@@ -15,4 +15,12 @@ module.exports = function($stateProvider, $urlRouterProvider) {
 				bodyClass: 'education'
 			}
 		})
+		.state('expertise', {
+			url: '/expertise',
+			templateUrl: 'info.html',
+			controller: 'Expertise',
+			data: {
+				bodyClass: 'expertise'
+			}
+		})
 };

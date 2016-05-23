@@ -24,5 +24,6 @@ app.directive('carousel', require('./directives/carousel'));
 app.directive('subSection', require('./directives/subSection'));
 
 app.controller('Education', ['$scope', require('./controllers/education')]);
+app.controller('Expertise', ['$scope', require('./controllers/expertise')]);
 
 app.config(require('./routing'));

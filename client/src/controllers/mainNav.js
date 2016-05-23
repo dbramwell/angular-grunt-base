@@ -7,6 +7,9 @@ module.exports = function($scope) {
 	$scope.buttons = [{
 		name: 'Education',
 		sref: 'education'
+	}, {
+		name: 'Expertise',
+		sref: 'expertise'
 	}];
 	$scope.removeHash = function(string) {
         return string.replace("#", '');
