@@ -2,12 +2,13 @@ window.jQuery = window.$ = require("jquery");
 require('bootstrap');
 var angular = require('angular');
 require('angular-ui-router');
+require('ngalertify');
 
 function easeInOutQuint(t) {
 	return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t
 };
 
-var app = angular.module('myApp', ['templates-main', 'ui.router']);
+var app = angular.module('myApp', ['templates-main', 'ui.router', "ngAlertify"]);
 
 app.run(['$rootScope', '$state',
     function ($rootScope, $state) {
@@ -25,5 +26,6 @@ app.directive('subSection', require('./directives/subSection'));
 
 app.controller('Education', ['$scope', require('./controllers/education')]);
 app.controller('Expertise', ['$scope', require('./controllers/expertise')]);
+app.controller('ContactMe', ['$scope', 'alertify', require('./controllers/contactMe')]);
 
 app.config(require('./routing'));

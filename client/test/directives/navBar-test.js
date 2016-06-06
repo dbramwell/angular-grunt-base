@@ -12,7 +12,7 @@ describe('Unit testing navBar directive', function() {
     $compile = _$compile_;
     $rootScope = _$rootScope_;
     $rootScope.brand = {name: 'Test', href: 'test', sref: 'test-sref'};
-    $rootScope.buttons = [{name: 'Button 1', href: 'button1', sref: 'button1-sref'}, {name: 'Button 2', href: 'button2', sref: 'button2-sref'}];
+    $rootScope.left = { buttons: [{name: 'Button 1', href: 'button1', sref: 'button1-sref'}, {name: 'Button 2', href: 'button2', sref: 'button2-sref'}]};
   }));
 
   it('Replaces the element with the appropriate content', function() {

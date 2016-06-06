@@ -23,4 +23,12 @@ module.exports = function($stateProvider, $urlRouterProvider) {
 				bodyClass: 'expertise'
 			}
 		})
+		.state('contactMe', {
+			url: '/contactMe',
+			templateUrl: 'emailForm.html',
+			controller: 'ContactMe',
+			data: {
+				bodyClass: 'contactMe'
+			}
+		})
 };

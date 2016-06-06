@@ -29,6 +29,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-html2js": "^0.3.6",
     "jquery": "^2.2.3",
+    "ngalertify": "^1.0.2",
     "path": "^0.12.7"
   },
   "scripts": {

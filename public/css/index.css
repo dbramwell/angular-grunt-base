@@ -10,7 +10,6 @@ body {
     width: 100%;
     margin: auto;
     background-size:cover;
-    text-align: center;
     min-height: 100%;
 }
 
@@ -19,7 +18,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     width: 90%;
-    background-color: rgba(255, 255, 255, 0.6);;
+    background-color: rgba(255, 255, 255, 0.8);;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -29,6 +28,10 @@ body {
 
 .expertise {
     background-image: url("../images/expertise.jpg");
+}
+
+.contactMe {
+    background-image: url("../images/contactMe.jpg");
 }
 
 #home-page {
@@ -83,4 +86,45 @@ body {
     display: inline-block;
     vertical-align: middle;
     line-height: normal; 
+}
+
+form {
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+}
+
+form > p > label {
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+
+form > p > input {
+    width: 250px;
+}
+
+form > p > textarea {
+    width: 100%;
+}
+
+form input.ng-invalid.ng-touched, form textarea.ng-invalid.ng-touched {
+    background-color: #FA787E;
+}
+
+form input.ng-valid.ng-touched, form textarea.ng-valid.ng-touched {
+    background-color: #78FA89;
+}
+
+form > div {
+    width: 100%;
+    text-align: center;
+}
+
+input[type="submit"] {
+    display: inline-block;
+}
+
+input[disabled="disabled"] {
+    background-color: #eeeeee;
+    color: #bbbbbb;
 }

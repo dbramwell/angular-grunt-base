@@ -1,0 +1,22 @@
+<div class="info" ng-class="$state.current.data.bodyClass">
+<div>
+<h1>CONTACT ME</h1>
+  <form novalidate class="css-form" name="emailForm">
+  <p>
+  <label>Name:</label>
+  <input type="text" ng-model="contact.name" required />
+  </p>
+  <p>
+  <label>E-mail:</label>
+  <input type="email" ng-model="contact.email" required />
+  </p>
+  <p>
+  <label>Message:</label>
+  <textarea rows="10" cols="50" ng-model="contact.content" required></textarea>
+  </p>
+  <div>
+  <input type="submit" value="Send" ng-click="send(contact)" ng-disabled="!emailForm.$valid"/>
+  </div>
+  </form>
+  </div>
+</div>

@@ -10,10 +10,15 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 	    <ul class="nav navbar-nav">
-	      <li ng-repeat="button in buttons" ng-class="{active: $state.current.url == '/{{button.sref}}'}">
+	      <li ng-repeat="button in left.buttons" ng-class="{active: $state.current.url == '/{{button.sref}}'}">
 	        <a ui-sref="{{button.sref}}" href="#/">{{button.name}}</a>
 	      </li>
 	    </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-repeat="button in right.buttons" ng-class="{active: $state.current.url == '/{{button.sref}}'}">
+          <a ui-sref="{{button.sref}}" href="#/">{{button.name}}</a>
+        </li>
+      </ul>
 	</div>
   </div>
 </nav>
