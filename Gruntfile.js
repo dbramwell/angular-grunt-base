@@ -47,13 +47,20 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			all: {
+			client: {
 				files: ['client/**/*', 'Gruntfile.js', 'public/**/*'],
-				tasks: ['default'],
+				tasks: ['default', 'karma'],
 				options: {
 					spawn: false,
 				},
 			},
+			server: {
+				files: ['server/**/*', 'Gruntfile.js'],
+				tasks: ['mochaTest'],
+				options: {
+					spawn: false,
+				},
+			}
 		},
 
 		protractor: {
@@ -106,6 +113,12 @@ module.exports = function(grunt) {
 					script: 'server/app.js'
 				}
 			}
+		},
+
+		mochaTest: {
+			test: {
+				src: ['server/test/**/*.js']
+			}
 		}
 	});
 
@@ -118,8 +131,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-express-server');
+	grunt.loadNpmTasks('grunt-mocha-test');
 
-	grunt.registerTask('build', ['clean', 'html2js', 'browserify', 'concat', 'copy']);
-	grunt.registerTask('default', ['build', 'karma']);
-	grunt.registerTask('e2e', ['build', 'copy:test', 'express:test', 'protractor']);
+	grunt.registerTask('default', ['clean', 'html2js', 'browserify', 'concat', 'copy']);
+	grunt.registerTask('e2e', ['default', 'copy:test', 'express:test', 'protractor']);
 };
