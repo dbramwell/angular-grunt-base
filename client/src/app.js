@@ -26,6 +26,6 @@ app.directive('subSection', require('./directives/subSection'));
 
 app.controller('Education', ['$scope', require('./controllers/education')]);
 app.controller('Expertise', ['$scope', require('./controllers/expertise')]);
-app.controller('ContactMe', ['$scope', 'alertify', require('./controllers/contactMe')]);
+app.controller('ContactMe', ['$scope', 'alertify', '$http', require('./controllers/contactMe')]);
 
 app.config(require('./routing'));

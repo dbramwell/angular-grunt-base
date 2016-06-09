@@ -1,11 +1,12 @@
-<html ng-app="myApp">
+<html>
 	<head>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/index.css">
 		<script type="text/javascript" src="js/dist.js"></script>
+		<script type="text/javascript" src="angular-mocks.js"></script>
 	</head>
-	<body>
+	<body ng-app="myApp">
 	    <nav-bar ng-controller="MainNavController"></nav-bar>
 	    <div ui-view></div>
 	</body>

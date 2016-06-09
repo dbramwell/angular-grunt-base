@@ -15,7 +15,7 @@
   <textarea rows="10" cols="50" ng-model="contact.content" required></textarea>
   </p>
   <div>
-  <input type="submit" value="Send" ng-click="send(contact)" ng-disabled="!emailForm.$valid"/>
+  <button class="send" type="button" ng-click="send()" ng-disabled="!emailForm.$valid">Send</button>
   </div>
   </form>
   </div>

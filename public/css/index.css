@@ -120,11 +120,11 @@ form > div {
     text-align: center;
 }
 
-input[type="submit"] {
+button {
     display: inline-block;
 }
 
-input[disabled="disabled"] {
+button[disabled="disabled"] {
     background-color: #eeeeee;
     color: #bbbbbb;
 }

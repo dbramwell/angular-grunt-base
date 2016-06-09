@@ -65,36 +65,48 @@ module.exports = function(grunt) {
 			},
 
 		},
-		connect: {
-			options: {
-				hostname: 'localhost',
-				base: ['build']
-			},
-			test: {
-				options: {
-					port: 9000
-				}
-			},
-			keepalive: {
-				options: {
-					port: 9001,
-					keepalive: true
-				}
-			}
-		},
 
 		copy: {
 			main: {
-				files: [
-					{expand: true, cwd: 'public/', src: ['**'], dest: 'build/'},
-					{expand: true, flatten: true, src: [
+				files: [{
+					expand: true,
+					cwd: 'public/',
+					src: ['**'],
+					dest: 'build/'
+				}, {
+					expand: true,
+					flatten: true,
+					src: [
 						'node_modules/bootstrap/dist/css/bootstrap.min.css',
-						'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'], dest: 'build/css/'}
-				]
+						'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+					],
+					dest: 'build/css/'
+				}]
 			},
+			test: {
+				files: [{
+					expand: true,
+					flatten: true,
+					src: [
+						'node_modules/angular-mocks/angular-mocks.js'
+					],
+					dest: 'build/'
+				}]
+			}
 		},
 
-		clean: ['build']
+		clean: ['build'],
+
+		express: {
+			options: {
+				port: 9000,
+			},
+			test: {
+				options: {
+					script: 'server/app.js'
+				}
+			}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-html2js');
@@ -102,12 +114,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-karma');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-protractor-runner');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-express-server');
 
 	grunt.registerTask('build', ['clean', 'html2js', 'browserify', 'concat', 'copy']);
 	grunt.registerTask('default', ['build', 'karma']);
-	grunt.registerTask('e2e', ['build', 'connect:test', 'protractor']);
+	grunt.registerTask('e2e', ['build', 'copy:test', 'express:test', 'protractor']);
 };

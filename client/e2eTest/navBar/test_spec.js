@@ -1,7 +1,7 @@
 describe('Nav Bar test', function() {
 
 	beforeEach(function() {
-		browser.get('http://localhost:9000/index.html');
+		browser.get('');
 	});
 
 	it('should have "David Bramwell" as header', function() {
