@@ -31,8 +31,11 @@ function getMailOptions(name, email, content) {
 EmailSender.prototype.sendEmail = function(name, email, content, res) {
 	this.transporter.sendMail(getMailOptions(name, email, content), function(error, info) {
 		if (error) {
+			console.log(error);
 			res.status(500).end();
 		} else {
+			var info = info ? info : {response: ''};
+			console.log('Message sent: ' + info.response);
 			res.end()
 		};
 	});
