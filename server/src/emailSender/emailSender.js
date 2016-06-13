@@ -1,18 +1,8 @@
 var nodemailer = require('nodemailer');
+var mailgunApiTransport = require("nodemailer-mailgunapi-transport");
 
 function EmailSender() {
-	this.transporter = nodemailer.createTransport({
-		service: 'Gmail',
-		auth: {
-			XOAuth2: {
-				user: process.env.EMAIL,
-				clientId: process.env.MY_CLIENT_ID,
-				clientSecret: process.env.MY_CLIENT_SECRET,
-				refreshToken: process.env.MY_REFRESH_TOKEN,
-				accessToken: process.env.MY_ACCESS_TOKEN
-			}
-		}
-	});
+	this.transporter = nodemailer.createTransport(mailgunApiTransport({apiKey: process.env.MAILGUN_API_KEY}));
 }
 
 function generateContent(name, email, content) {
@@ -26,7 +16,7 @@ function generateContent(name, email, content) {
 
 function getMailOptions(name, email, content) {
 	return {
-		from: process.env.EMAIL,
+		from: process.env.MAILGUN_EMAIL,
 		to: process.env.EMAIL,
 		subject: 'Website contact from ' + email,
 		html: generateContent(name, email, content)
