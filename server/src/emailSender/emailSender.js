@@ -4,8 +4,12 @@ function EmailSender() {
 	this.transporter = nodemailer.createTransport({
 		service: 'Gmail',
 		auth: {
-			user: process.env.EMAIL,
-			pass: process.env.EMAIL_PASSWORD
+			XOAuth2: {
+				user: process.env.EMAIL,
+				clientId: process.env.MY_CLIENT_ID,
+				clientSecret: process.env.MY_CLIENT_SECRET,
+				refreshToken: process.env.MY_REFRESH_TOKEN
+			}
 		}
 	});
 }
@@ -34,7 +38,9 @@ EmailSender.prototype.sendEmail = function(name, email, content, res) {
 			console.log(error);
 			res.status(500).end();
 		} else {
-			var info = info ? info : {response: ''};
+			var info = info ? info : {
+				response: ''
+			};
 			console.log('Message sent: ' + info.response);
 			res.end()
 		};
