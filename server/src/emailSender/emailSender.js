@@ -6,6 +6,7 @@ function EmailSender() {
 		auth: {
 			XOAuth2: {
 				user: process.env.EMAIL,
+				pass: process.env.EMAIL_PASSWORD,
 				clientId: process.env.MY_CLIENT_ID,
 				clientSecret: process.env.MY_CLIENT_SECRET,
 				refreshToken: process.env.MY_REFRESH_TOKEN
