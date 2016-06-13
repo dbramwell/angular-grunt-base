@@ -1,8 +1,13 @@
 var nodemailer = require('nodemailer');
-var mailgunApiTransport = require("nodemailer-mailgunapi-transport");
 
 function EmailSender() {
-	this.transporter = nodemailer.createTransport(mailgunApiTransport({apiKey: process.env.MAILGUN_API_KEY}));
+	this.transporter = nodemailer.createTransport({
+		service: 'Mailgun',
+		auth: {
+			user: process.env.MAILGUN_EMAIL,
+			pass: process.env.MAILGUN_PASS
+		}
+	});
 }
 
 function generateContent(name, email, content) {
@@ -16,7 +21,7 @@ function generateContent(name, email, content) {
 
 function getMailOptions(name, email, content) {
 	return {
-		from: process.env.MAILGUN_EMAIL,
+		from: "david-bramwell@herokuapp.com",
 		to: process.env.EMAIL,
 		subject: 'Website contact from ' + email,
 		html: generateContent(name, email, content)
