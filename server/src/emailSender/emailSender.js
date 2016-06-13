@@ -21,7 +21,7 @@ function generateContent(name, email, content) {
 
 function getMailOptions(name, email, content) {
 	return {
-		from: "david-bramwell@herokuapp.com",
+		from: email,
 		to: process.env.EMAIL,
 		subject: 'Website contact from ' + email,
 		html: generateContent(name, email, content)
