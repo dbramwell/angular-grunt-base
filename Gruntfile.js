@@ -110,7 +110,7 @@ module.exports = function(grunt) {
 			},
 			test: {
 				options: {
-					script: 'server/app.js'
+					script: 'server/src/app.js'
 				}
 			}
 		},
