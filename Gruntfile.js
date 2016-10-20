@@ -135,4 +135,5 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', ['clean', 'html2js', 'browserify', 'concat', 'copy']);
 	grunt.registerTask('e2e', ['default', 'copy:test', 'express:test', 'protractor']);
+	grunt.registerTask('allTests', ['default', 'karma', 'mochaTest', 'copy:test', 'express:test', 'protractor']);
 };

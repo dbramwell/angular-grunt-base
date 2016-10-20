@@ -23,7 +23,7 @@ describe('EmailSender', function() {
 		});
 		expect(transport.sentMail.length).to.equal(1);
 		expect(transport.sentMail[0].data.to).to.equal('test@test.com');
-		expect(transport.sentMail[0].data.from).to.equal('test@test.com');
+		expect(transport.sentMail[0].data.from).to.equal('david@gmail.com');
 		expect(transport.sentMail[0].message.content).to.equal(
 			'<h2>Name:</h2>' +
 			'<p>David</p><br>' + 
