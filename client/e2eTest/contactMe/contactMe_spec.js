@@ -14,7 +14,7 @@ describe('Contact Me page test', function() {
 				}
 			});
 		});
-		browser.get('#contactMe');
+		browser.get('#!/contactMe');
 	});
 
 	afterEach(function() {
@@ -69,7 +69,7 @@ describe('Contact Me page test', function() {
 
 	it('when ok button is clicked in notification, notification is removed', function() {
 		backend.whenPOST(/sendEmail/).respond(function(method, url, data) {
-            setTimeout(function() {return [200, data];},5000);
+            return [200, data];
         });
 		element(by.css('input[ng-model="contact.name"]')).sendKeys('David');
 		element(by.css('input[ng-model="contact.email"]')).sendKeys('myemail@email.com');
@@ -87,26 +87,25 @@ describe('Contact Me page test', function() {
 
 	it('when ok button is clicked in notification, notification log is added showing "Sending Message"', function() {
 		backend.whenPOST(/sendEmail/).respond(function(method, url, data) {
-            setTimeout(function() {return [200, data];},5000);
-        });
-
-		element(by.css('input[ng-model="contact.name"]')).sendKeys('David');
-		element(by.css('input[ng-model="contact.email"]')).sendKeys('myemail@email.com');
-		element(by.css('textarea[ng-model="contact.content"]')).sendKeys('A message');
-		var EC = protractor.ExpectedConditions;
-		element(by.css('button.send')).click().then(function() {
 			browser.wait(EC.elementToBeClickable(element(by.css('div.alertify div.dialog button.ok'))),
 				5000, 'Ok button not clickable');
 			element(by.css('div.alertify div.dialog button.ok')).click();
 			browser.wait(EC.presenceOf(element(by.css('div.alertify-logs div.show'))),
 				5000, 'Log message not visible');
 			expect(element(by.css('div.alertify-logs div.show')).getText()).toEqual("Sending Message");
-		});
+            return [200, data];
+        });
+
+		element(by.css('input[ng-model="contact.name"]')).sendKeys('David');
+		element(by.css('input[ng-model="contact.email"]')).sendKeys('myemail@email.com');
+		element(by.css('textarea[ng-model="contact.content"]')).sendKeys('A message');
+		var EC = protractor.ExpectedConditions;
+		element(by.css('button.send')).click();
 	});
 
 	it('when ok button is clicked in notification, form is reset', function() {
 		backend.whenPOST(/sendEmail/).respond(function(method, url, data) {
-            setTimeout(function() {return [200, data];},5000);
+            return [200, data];
         });
 
 		element(by.css('input[ng-model="contact.name"]')).sendKeys('David');
