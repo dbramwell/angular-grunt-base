@@ -3,6 +3,12 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
+		env : {
+            e2e : {
+ 	            MONGODB_URI: 'mongodb://localhost:55555'
+            }
+        },
+
 		html2js: {
 			options: {
 				base: 'client/src/templates'
@@ -69,8 +75,7 @@ module.exports = function(grunt) {
 					configFile: "client/e2eTest/conf.js",
 					args: {}
 				}
-			},
-
+			}
 		},
 
 		copy: {
@@ -119,9 +124,31 @@ module.exports = function(grunt) {
 			test: {
 				src: ['server/test/**/*.js']
 			}
-		}
+		},
+
+		shell: {
+			makeMongoDir: {
+				command: 'mkdir -p ./build/tmp/.data/db'
+			},
+            mongo: {
+                command: 'mongod --dbpath ./build/tmp/.data/db --smallfiles --port 55555',
+                options: {
+                    async: true,
+                    stdout: true,
+                    stderr: true,
+                    failOnError: true,
+                    execOptions: {
+                        cwd: '.'
+                    }
+                }
+            },
+            buildDb: {
+            	command: 'sleep 15; node server/data/build.js'
+            }
+        }
 	});
 
+    grunt.loadNpmTasks('grunt-env');
 	grunt.loadNpmTasks('grunt-html2js');
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -132,8 +159,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-express-server');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-shell-spawn');
 
 	grunt.registerTask('default', ['clean', 'html2js', 'browserify', 'concat', 'copy']);
-	grunt.registerTask('e2e', ['default', 'copy:test', 'express:test', 'protractor']);
-	grunt.registerTask('allTests', ['default', 'karma', 'mochaTest', 'copy:test', 'express:test', 'protractor']);
+	grunt.registerTask('createDb', ['env:e2e', 'shell:makeMongoDir', 'shell:mongo', 'shell:buildDb']);
+	grunt.registerTask('e2e', ['default', 'copy:test', 'createDb', 'express:test', 'protractor']);
+	grunt.registerTask('allTests', ['default', 'karma', 'mochaTest', 'copy:test', 'createDb', 'express:test', 'protractor']);
 };
