@@ -45,7 +45,7 @@
   },
   "scripts": {
     "postinstall": "grunt",
-    "test": "./node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update; grunt allTests",
+    "test": "./node_modules/protractor/bin/webdriver-manager update; grunt allTests",
     "start": "node server/src/app.js"
   }
 }
