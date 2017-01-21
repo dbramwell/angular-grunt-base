@@ -18,3 +18,4 @@ rm -rf build/tmp
 # Copy files
 cp -r public/* build
 cp node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/bootstrap/dist/css/bootstrap-theme.min.css build/css
+[ -n "$PROD" ] || cp node_modules/angular-mocks/angular-mocks.js build
