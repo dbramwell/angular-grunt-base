@@ -8,7 +8,7 @@ function easeInOutQuint(t) {
 	return t < .5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t
 };
 
-var app = angular.module('myApp', ['templates-main', 'ui.router', "ngAlertify"]);
+var app = angular.module('myApp', ['ui.router', 'ngAlertify', 'emailForm.html', 'homePage.html', 'info.html', 'navBar.html', 'subSection.html']);
 
 app.run(['$rootScope', '$state',
     function ($rootScope, $state) {
