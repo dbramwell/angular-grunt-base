@@ -41,7 +41,7 @@
     "functionalTest": "./scripts/functionalTest/run.sh",
     "clientUnitTest": "./scripts/clientUnitTest.sh",
     "start": "node server/src/app.js",
-    "startDev": "nodemon server/src/app.js",
+    "startDev": "nodemon --watch server server/src/app.js",
     "watch": "npm-watch"
   },
   "watch": {
