@@ -18,6 +18,8 @@
     "mocha": "^2.5.3",
     "ng-html2js": "^3.0.0",
     "nodemailer-mock-transport": "^1.3.0",
+    "nodemon": "^1.11.0",
+    "npm-watch": "^0.1.7",
     "protractor": "^5.0.0",
     "protractor-jasmine2-screenshot-reporter": "^0.3.2"
   },
@@ -38,6 +40,16 @@
     "build": "./scripts/build/run.sh",
     "functionalTest": "./scripts/functionalTest/run.sh",
     "clientUnitTest": "./scripts/clientUnitTest.sh",
-    "start": "node server/src/app.js"
+    "start": "node server/src/app.js",
+    "startDev": "nodemon server/src/app.js",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "client/src"
+      ],
+      "extensions": "js,html"
+    }
   }
 }

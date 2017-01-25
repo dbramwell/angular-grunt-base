@@ -1,0 +1,1 @@
+docker run -d -v $(pwd):/usr/src/app -w /usr/src/app node:slim npm run watch
