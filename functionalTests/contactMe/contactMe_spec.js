@@ -22,7 +22,7 @@ describe('Contact Me page test', function() {
 	});
 
 	it('should have correct elements', function() {
-		expect(element(by.css('h1')).getText()).toEqual("CONTACT BE");
+		expect(element(by.css('h1')).getText()).toEqual("CONTACT ME");
 		expect(element(by.css('input[ng-model="contact.name"]')).isPresent()).toBe(true);
 		expect(element(by.css('input[ng-model="contact.email"]')).isPresent()).toBe(true);
 		expect(element(by.css('textarea[ng-model="contact.content"]')).isPresent()).toBe(true);
