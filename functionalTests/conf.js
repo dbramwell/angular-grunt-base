@@ -18,7 +18,7 @@ exports.config = {
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
   },
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://myapp:3000',
 
   // ...
 

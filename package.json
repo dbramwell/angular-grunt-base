@@ -34,9 +34,9 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "postinstall": "./scripts/build.sh",
-    "build": "./scripts/build.sh",
-    "functionalTest": "./scripts/functionalTest.sh",
+    "postinstall": "./scripts/build/run.sh",
+    "build": "./scripts/build/run.sh",
+    "functionalTest": "./scripts/functionalTest/run.sh",
     "clientUnitTest": "./scripts/clientUnitTest.sh",
     "start": "node server/src/app.js"
   }
