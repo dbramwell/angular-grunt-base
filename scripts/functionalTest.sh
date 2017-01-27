@@ -1,1 +1,1 @@
-docker run --link=myapp:myapp -v $(pwd):/usr/src/app -w /usr/src/app my-home-page npm run functionalTest
+docker run --link=myapp:myapp -v $(pwd):/usr/src/app -w /usr/src/app test-runner npm run functionalTest

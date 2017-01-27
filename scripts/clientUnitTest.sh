@@ -1,3 +1,1 @@
-# Run from root of project
-
-karma start
+docker run -v $(pwd):/usr/src/app -w /usr/src/app test-runner npm run clientUnitTest

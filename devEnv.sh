@@ -1,0 +1,8 @@
+alias clean="./scripts/clean.sh"
+alias build="./scripts/build.sh"
+alias startWatcher="./scripts/watch.sh"
+alias stopWatcher="docker stop watcher"
+alias startDevEnv="./scripts/start.sh"
+alias stopDevEnv="docker stop myapp"
+alias clientUnitTest="./scripts/clientUnitTest.sh"
+alias functionalTest="./scripts/functionalTest.sh"
