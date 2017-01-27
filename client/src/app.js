@@ -19,9 +19,6 @@ app.run(['$rootScope', '$state',
 app.controller('MainNavController', ['$scope', require('./controllers/mainNav')]);
 app.directive('navBar', require('./directives/navBar'));
 
-app.controller('MainCarouselController', ['$scope', require('./controllers/mainCarousel')]);
-app.directive('carousel', require('./directives/carousel'));
-
 app.directive('subSection', require('./directives/subSection'));
 
 app.controller('Education', ['$scope', require('./controllers/education')]);
